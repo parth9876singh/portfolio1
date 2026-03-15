@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppStore } from './lib/store';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import { config } from './data/config';
 
 import CustomCursor from './components/ui/CustomCursor';
@@ -64,24 +64,22 @@ function App() {
   }, [loading, setHasSeenLoadingScreen]);
 
   return (
-    <HelmetProvider>
-      <Router>
-        <CustomCursor />
-        
-        {loading ? (
-          <LoadingScreen />
-        ) : (
-          <div className="flex flex-col min-h-screen relative selection:bg-brand-indigo/30 selection:text-white">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
-          </div>
-        )}
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <CustomCursor />
+      
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <div className="flex flex-col min-h-screen relative selection:bg-brand-indigo/30 selection:text-white">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </div>
+      )}
+    </Router>
   );
 }
 

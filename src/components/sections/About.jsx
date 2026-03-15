@@ -149,12 +149,10 @@ const About = () => {
             <div className="absolute inset-0 p-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col">
               
               {/* Image Container */}
-              <div className="relative w-full h-full rounded-xl overflow-hidden bg-brand-base">
-                 <img 
-                   src={config.profilePhoto} 
-                   alt={config.name} 
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                 />
+              <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-brand-indigo/30 via-brand-base to-brand-cyan/20 flex items-center justify-center">
+                 <span className="text-7xl md:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan select-none">
+                   {config.name.split(' ').map(n => n[0]).join('')}
+                 </span>
                  {/* Subtle inner shadow overlay at bottom */}
                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
               </div>
