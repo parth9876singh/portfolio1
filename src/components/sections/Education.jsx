@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 import { educationData } from '../../data/education';
-import Card from '../ui/Card';
 
 const Education = () => {
   return (
@@ -31,7 +30,7 @@ const Education = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="h-full"
               >
-                <Card className="h-full p-8 md:p-10 flex flex-col relative overflow-hidden group">
+                <div className="glass-card rounded-[2rem] h-full p-8 md:p-10 flex flex-col relative overflow-hidden group">
                   {/* Decorative background number */}
                   <div className="absolute -bottom-8 -right-8 text-9xl font-display font-black text-white/[0.02] pointer-events-none select-none group-hover:scale-110 group-hover:text-brand-cyan/[0.05] transition-all duration-700">
                     0{index + 1}
@@ -74,7 +73,7 @@ const Education = () => {
                       </div>
                     </div>
                   </div>
-                </Card>
+                </div>
               </motion.div>
             );
           })}
