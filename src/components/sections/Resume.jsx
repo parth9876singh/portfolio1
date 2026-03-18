@@ -97,46 +97,63 @@ const Resume = () => {
           <div className="resume-animate flex justify-center">
             <div className="relative group">
               {/* Outer glow */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-brand-indigo/30 via-brand-cyan/20 to-brand-indigo/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-brand-indigo/30 via-brand-cyan/20 to-brand-indigo/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
               {/* Card */}
-              <div className="relative w-72 md:w-80 h-96 md:h-[28rem] bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 group-hover:border-brand-indigo/40 transition-all duration-500 p-8 flex flex-col items-center justify-center gap-6 overflow-hidden">
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-brand-indigo/40 rounded-tl-2xl" />
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-brand-cyan/40 rounded-br-2xl" />
+              <div className="relative w-72 md:w-80 h-96 md:h-[28rem] bg-gradient-to-b from-[#131628] to-[#0a0a10] rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+                
+                {/* Advanced Corner accents - matching the 50% split */}
+                <div className="absolute top-0 left-0 w-1/2 h-1/2 border-t-[1.5px] border-l-[1.5px] border-brand-indigo/60 rounded-tl-2xl opacity-80 transition-all duration-500 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-1/2 h-1/2 border-b-[1.5px] border-r-[1.5px] border-brand-cyan/60 rounded-br-2xl opacity-80 transition-all duration-500 pointer-events-none" />
 
-                {/* Floating doc icon */}
-                <div className="resume-float p-5 rounded-2xl bg-gradient-to-br from-brand-indigo/20 to-brand-cyan/20 border border-white/10">
-                  <FileText size={48} className="text-brand-cyan" />
+                {/* Subtle vertical glass reflection */}
+                <div className="absolute top-0 left-[20%] w-16 h-full bg-gradient-to-r from-transparent via-white/[0.02] to-transparent pointer-events-none transform -skew-x-12" />
+
+                {/* Floating doc icon container */}
+                <div className="resume-float relative mt-4">
+                  <div className="w-20 h-20 rounded-[1.25rem] bg-[#111c30] border border-[#2a3855] flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                    <FileText size={42} className="text-[#00e5ff]" strokeWidth={2.5} />
+                  </div>
+                  {/* Glowing overlapping dot */}
+                  <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-[#131628] flex items-center justify-center shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#00e5ff] shadow-[0_0_8px_rgba(0,229,255,1)]" />
+                  </div>
                 </div>
 
-                <div className="text-center">
-                  <h3 className="text-xl font-display font-bold text-white mb-1">
+                {/* Name & Role */}
+                <div className="text-center z-10 w-full mt-10 mb-6 flex flex-col items-center">
+                  <h3 className="text-[26px] font-display font-bold text-white tracking-wide mb-1">
                     {config.name}
                   </h3>
-                  <p className="text-sm text-gray-400">{config.role}</p>
+                  <p className="text-sm font-sans text-gray-400 font-medium tracking-wide">{config.role}</p>
+                  
+                  {/* The small centered dot line from the image */}
+                  <div className="mt-4 relative flex items-center justify-center w-12">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00e5ff] shadow-[0_0_8px_rgba(0,229,255,0.8)] z-10" />
+                    <div className="absolute w-full h-px bg-brand-indigo/40" />
+                  </div>
                 </div>
 
                 {/* Mini stats */}
-                <div className="flex gap-6 text-center">
-                  <div>
-                    <p className="text-2xl font-display font-bold text-brand-cyan">3+</p>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">Projects</p>
+                <div className="flex justify-between items-center w-full z-10 px-6 pb-2">
+                  <div className="flex flex-col items-center w-1/3">
+                    <p className="text-[28px] font-display font-bold text-[#00e5ff] mb-1 mt-1">3+</p>
+                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">Projects</p>
                   </div>
-                  <div className="w-px bg-white/10" />
-                  <div>
-                    <p className="text-2xl font-display font-bold text-brand-indigo">200+</p>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">Problems</p>
+                  <div className="w-px h-10 bg-white/10" />
+                  <div className="flex flex-col items-center w-1/3">
+                    <p className="text-[28px] font-display font-bold text-brand-indigo mb-1 mt-1">200+</p>
+                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">Problems</p>
                   </div>
-                  <div className="w-px bg-white/10" />
-                  <div>
-                    <p className="text-2xl font-display font-bold text-emerald-400">{config.cgpa}</p>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">CGPA</p>
+                  <div className="w-px h-10 bg-white/10" />
+                  <div className="flex flex-col items-center w-1/3">
+                    <p className="text-[28px] font-display font-bold text-[#10b981] mb-1 mt-1">{config.cgpa}</p>
+                    <p className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">CGPA</p>
                   </div>
                 </div>
 
                 {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full translate-y-full group-hover:translate-x-full group-hover:-translate-y-full transition-transform duration-1000 pointer-events-none" />
               </div>
             </div>
           </div>

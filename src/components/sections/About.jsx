@@ -134,25 +134,40 @@ const About = () => {
           </div>
 
           {/* Photo Card Container */}
-          <div className="relative w-full max-w-[380px] aspect-[380/460] rounded-2xl group transition-transform duration-500 hover:scale-[1.02] mx-auto z-10">
+          <motion.div 
+            whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="relative w-full max-w-[380px] aspect-[380/460] rounded-2xl group mx-auto z-10 perspective-[1000px]"
+          >
             
             {/* Border spin container */}
-            <div className="absolute -inset-[3px] rounded-[18px] overflow-hidden">
+            <div className="absolute -inset-[3px] rounded-[18px] overflow-hidden group-hover:blur-sm transition-all duration-500">
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#6366f1_360deg)] animate-[spin_4s_linear_infinite]" />
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_180deg,transparent_0_340deg,#06b6d4_360deg)] animate-[spin_4s_linear_infinite]" />
             </div>
             
+            {/* Dynamic glow behind the card on hover */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-brand-indigo/30 to-brand-cyan/30 rounded-[2rem] blur-xl opacity-0 hover-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
             {/* Inner background blocking the spin from taking over whole card, showing only border */}
-            <div className="absolute inset-0 rounded-2xl bg-[#0a0a0f]" />
+            <div className="absolute inset-0 rounded-2xl bg-[#0a0a0f] z-10" />
             
             {/* Frame with padding */}
-            <div className="absolute inset-0 p-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col">
+            <div className="absolute inset-0 p-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col z-20">
               
               {/* Image Container */}
               <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-brand-indigo/30 via-brand-base to-brand-cyan/20 flex items-center justify-center">
-                 <span className="text-7xl md:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan select-none">
-                   {config.name.split(' ').map(n => n[0]).join('')}
-                 </span>
+                 {config.profilePhoto ? (
+                   <img 
+                     src={config.profilePhoto} 
+                     alt={config.name} 
+                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" 
+                   />
+                 ) : (
+                   <span className="text-7xl md:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan select-none">
+                     {config.name.split(' ').map(n => n[0]).join('')}
+                   </span>
+                 )}
                  {/* Subtle inner shadow overlay at bottom */}
                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
               </div>
@@ -172,7 +187,7 @@ const About = () => {
                 <span className="text-sm font-mono text-white tracking-wide">{config.availabilityText}</span>
               </div>
             )}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Right Column: Content */}

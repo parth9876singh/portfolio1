@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,22 +58,33 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (data.honeypot) return;
+    setIsSubmitting(true);
     
-    // Format the form data into an email body
-    const body = `Name: ${data.name}
-Email: ${data.email}
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          name: data.name,
+          reply_to: data.email,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-Message:
-${data.message}
-`;
-
-    // Open user's default email client pre-filled with the form data
-    window.location.href = `mailto:${config.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
-    
-    toast.success("Opening your email client...");
-    reset();
+      toast.success("Message sent successfully!");
+      reset();
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -164,38 +176,14 @@ ${data.message}
             ))}
           </div>
 
-          {/* What I can help with */}
-          <div className="contact-stagger mt-10 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-gray-400 mb-4">
-              What I can help with
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Full Stack Web Apps",
-                "MERN Stack Projects",
-                "REST API Development",
-                "Frontend (React)",
-                "Backend (Node/Express)",
-                "Database Design",
-                "Freelance Projects",
-                "Open Source Collaboration",
-              ].map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-lg hover:border-brand-indigo/40 hover:text-white transition-all duration-300 cursor-default"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+
         </div>
 
         {/* Right Form Panel */}
         <div className="contact-stagger">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="glass-card rounded-4xl p-8 md:p-10 border border-white/10 bg-white/5 backdrop-blur-xl flex flex-col gap-6"
+            className="rounded-[2rem] p-8 md:p-10 border border-white/5 bg-[#13151f] shadow-2xl flex flex-col gap-6"
           >
             <input
               type="text"
@@ -207,13 +195,13 @@ ${data.message}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 relative">
-                <label className="text-xs font-mono uppercase tracking-wider text-gray-500 ml-2">
-                  Name
+                <label className="text-[11px] font-mono tracking-widest text-[#6c7280] font-semibold mb-1">
+                  NAME
                 </label>
                 <input
                   type="text"
                   {...register("name")}
-                  className={`w-full bg-white/5 border ${errors.name ? "border-red-500/50" : "border-white/10 focus:border-indigo-500/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
+                  className={`w-full bg-[#1c1f2e] border ${errors.name ? "border-red-500/50" : "border-white/5 focus:border-brand-indigo/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
                   placeholder="John Doe"
                 />
                 {errors.name && (
@@ -223,13 +211,13 @@ ${data.message}
                 )}
               </div>
               <div className="flex flex-col gap-2 relative">
-                <label className="text-xs font-mono uppercase tracking-wider text-gray-500 ml-2">
-                  Email
+                <label className="text-[11px] font-mono tracking-widest text-[#6c7280] font-semibold mb-1">
+                  EMAIL
                 </label>
                 <input
                   type="email"
                   {...register("email")}
-                  className={`w-full bg-white/5 border ${errors.email ? "border-red-500/50" : "border-white/10 focus:border-indigo-500/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
+                  className={`w-full bg-[#1c1f2e] border ${errors.email ? "border-red-500/50" : "border-white/5 focus:border-brand-indigo/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
                   placeholder="john@example.com"
                 />
                 {errors.email && (
@@ -241,13 +229,13 @@ ${data.message}
             </div>
 
             <div className="flex flex-col gap-2 relative">
-              <label className="text-xs font-mono uppercase tracking-wider text-gray-500 ml-2">
-                Subject
+              <label className="text-[11px] font-mono tracking-widest text-[#6c7280] font-semibold mb-1">
+                SUBJECT
               </label>
               <input
                 type="text"
                 {...register("subject")}
-                className={`w-full bg-white/5 border ${errors.subject ? "border-red-500/50" : "border-white/10 focus:border-indigo-500/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
+                className={`w-full bg-[#1c1f2e] border ${errors.subject ? "border-red-500/50" : "border-white/5 focus:border-brand-indigo/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all pointer-events-auto`}
                 placeholder="Job Opportunity at Tech Company"
               />
               {errors.subject && (
@@ -258,13 +246,13 @@ ${data.message}
             </div>
 
             <div className="flex flex-col gap-2 relative">
-              <label className="text-xs font-mono uppercase tracking-wider text-gray-500 ml-2">
-                Message
+              <label className="text-[11px] font-mono tracking-widest text-[#6c7280] font-semibold mb-1">
+                MESSAGE
               </label>
               <textarea
                 {...register("message")}
                 rows="5"
-                className={`w-full bg-white/5 border ${errors.message ? "border-red-500/50" : "border-white/10 focus:border-indigo-500/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all resize-none pointer-events-auto`}
+                className={`w-full bg-[#1c1f2e] border ${errors.message ? "border-red-500/50" : "border-white/5 focus:border-brand-indigo/50"} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 outline-none transition-all resize-none pointer-events-auto`}
                 placeholder="Tell me about your project or opportunity..."
               ></textarea>
               {errors.message && (
@@ -274,24 +262,26 @@ ${data.message}
               )}
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="relative mt-4 w-full md:w-auto self-end px-8 py-4 bg-brand-indigo text-white font-display font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 hover:bg-indigo-600 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden pointer-events-auto"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
-              <span className="relative flex items-center gap-2">
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send
-                  size={18}
-                  className={`${isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 transition-transform"}`}
-                />
-              </span>
-            </button>
-
-            <p className="text-xs text-gray-500 text-right">
-              Usually replies within 24 hours
-            </p>
+            <div className="w-full flex flex-col items-end mt-4">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="relative px-8 py-4 bg-[#6366f1] hover:bg-[#5a5dd9] text-white font-display font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_4px_20px_rgba(99,102,241,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden pointer-events-auto"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+                <span className="relative flex items-center gap-2">
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send
+                    size={18}
+                    className={`${isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"}`}
+                  />
+                </span>
+              </button>
+              
+              <p className="text-[11px] text-gray-500 mt-6 tracking-wide text-right">
+                Usually replies within 24 hours
+              </p>
+            </div>
           </form>
 
           {/* Social Icons */}

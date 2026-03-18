@@ -141,18 +141,7 @@ const Achievements = () => {
             );
           })}
 
-          {/* Coming Soon Card */}
-          <div className="achieve-card relative rounded-2xl p-6 md:p-8 border-2 border-dashed border-white/20 bg-white/3 backdrop-blur-xl hover:-translate-y-2 transition-all duration-300 items-center justify-center min-h-80 group cursor-default hover:border-brand-indigo/50 hover:bg-white/5 flex flex-col gap-4">
-            <div className="text-center">
-              <div className="text-5xl mb-4 opacity-50 group-hover:opacity-75 transition-opacity">⭐</div>
-              <h3 className="text-lg font-display font-bold text-white/60 group-hover:text-white transition-colors">
-                More Achievements
-              </h3>
-              <p className="text-xs text-gray-500 mt-2 group-hover:text-gray-400 transition-colors">
-                Actively building my portfolio
-              </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

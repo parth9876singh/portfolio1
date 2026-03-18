@@ -97,7 +97,7 @@ const Hero = () => {
         {/* Social Icons Row */}
         <div className="hero-element flex items-center justify-center md:justify-start gap-6 mb-16 relative z-50">
           <a 
-            href="https://github.com/RakeshRanjan6810" 
+            href={config.social.github} 
             target="_blank" 
             rel="noreferrer"
             className="group w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-brand-indigo/20 hover:border-brand-indigo/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)]"
@@ -115,7 +115,7 @@ const Hero = () => {
             <Linkedin size={20} className="text-gray-300 group-hover:text-brand-cyan transition-colors" />
           </a>
           <a 
-            href="https://leetcode.com" 
+            href={config.social.leetcode} 
             target="_blank" 
             rel="noreferrer"
             className="group w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-yellow-500/20 hover:border-yellow-500/50 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
