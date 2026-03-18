@@ -1,6 +1,6 @@
-import { useRef, useMemo } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
+import { useRef, useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
 
 const ParticleField = ({ count = 4000 }) => {
   const pointsRef = useRef();
@@ -14,7 +14,7 @@ const ParticleField = ({ count = 4000 }) => {
       const x = (Math.random() - 0.5) * 15;
       const y = (Math.random() - 0.5) * 15;
       const z = (Math.random() - 0.5) * 15;
-      
+
       p[i * 3] = x;
       p[i * 3 + 1] = y;
       p[i * 3 + 2] = z;
@@ -34,23 +34,31 @@ const ParticleField = ({ count = 4000 }) => {
 
     // Subtle wave motion
     for (let i = 0; i < count; i++) {
-       const ix = i * 3;
-       const x = fixedPositions[ix];
-       const z = fixedPositions[ix + 2];
-       
-       // Gently oscillate the Y position based on X/Z and time
-       positionsArray[ix + 1] = fixedPositions[ix + 1] + Math.sin(time * 0.5 + x) * 0.2 + Math.cos(time * 0.3 + z) * 0.2;
+      const ix = i * 3;
+      const x = fixedPositions[ix];
+      const z = fixedPositions[ix + 2];
+
+      // Gently oscillate the Y position based on X/Z and time
+      positionsArray[ix + 1] =
+        fixedPositions[ix + 1] +
+        Math.sin(time * 0.5 + x) * 0.2 +
+        Math.cos(time * 0.3 + z) * 0.2;
     }
-    
+
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
-    
+
     // Slow global rotation
     pointsRef.current.rotation.y = time * 0.05;
     pointsRef.current.rotation.x = time * 0.02;
   });
 
   return (
-    <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
+    <Points
+      ref={pointsRef}
+      positions={positions}
+      stride={3}
+      frustumCulled={false}
+    >
       <PointMaterial
         transparent
         color="#06b6d4" // Cyan

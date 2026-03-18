@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
-import { educationData } from '../../data/education';
+import { motion } from "framer-motion";
+import { BookOpen } from "lucide-react";
+import { educationData } from "../../data/education";
 
 const Education = () => {
   return (
@@ -66,7 +66,10 @@ const Education = () => {
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {edu.coursework.map((course) => (
-                          <span key={course} className="text-xs px-3 py-1.5 rounded-md bg-black/40 border border-white/5 text-gray-400">
+                          <span
+                            key={course}
+                            className="text-xs px-3 py-1.5 rounded-md bg-black/40 border border-white/5 text-gray-400"
+                          >
                             {course}
                           </span>
                         ))}

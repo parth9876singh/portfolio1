@@ -1,7 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const useTypewriter = (stringsArray = [], typingSpeed = 100, deletingSpeed = 50, pauseDelay = 2000) => {
-  const [displayText, setDisplayText] = useState('');
+const useTypewriter = (
+  stringsArray = [],
+  typingSpeed = 100,
+  deletingSpeed = 50,
+  pauseDelay = 2000,
+) => {
+  const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -14,7 +19,7 @@ const useTypewriter = (stringsArray = [], typingSpeed = 100, deletingSpeed = 50,
     if (!isDeleting && displayText === currentString) {
       // Pause at end of spelling
       timeout = setTimeout(() => setIsDeleting(true), pauseDelay);
-    } else if (isDeleting && displayText === '') {
+    } else if (isDeleting && displayText === "") {
       // Move to next word when fully deleted
       setIsDeleting(false);
       setCurrentIndex((prev) => (prev + 1) % stringsArray.length);
@@ -25,13 +30,24 @@ const useTypewriter = (stringsArray = [], typingSpeed = 100, deletingSpeed = 50,
         ? currentString.substring(0, displayText.length - 1)
         : currentString.substring(0, displayText.length + 1);
 
-      timeout = setTimeout(() => {
-        setDisplayText(nextChar);
-      }, isDeleting ? deletingSpeed : typingSpeed);
+      timeout = setTimeout(
+        () => {
+          setDisplayText(nextChar);
+        },
+        isDeleting ? deletingSpeed : typingSpeed,
+      );
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentIndex, stringsArray, typingSpeed, deletingSpeed, pauseDelay]);
+  }, [
+    displayText,
+    isDeleting,
+    currentIndex,
+    stringsArray,
+    typingSpeed,
+    deletingSpeed,
+    pauseDelay,
+  ]);
 
   return displayText;
 };

@@ -3,8 +3,7 @@ export const projects = [
     id: 1,
     title: "CareerGuide AI",
     shortDesc: "AI-driven career guidance platform",
-    problemSolved:
-      "Students lack personalized career direction",
+    problemSolved: "Students lack personalized career direction",
     description:
       "Built full-stack AI career guidance platform with personalized recommendations based on skills, interests, and goals. JWT auth + role-based authorization + AI-powered chatbot. Optimized REST APIs improving response accuracy and system performance.",
     techStack: ["React", "Node.js", "JWT", "MongoDB"],
@@ -25,9 +24,17 @@ export const projects = [
       "Need for live order tracking + secure payments in food delivery",
     description:
       "Real-time food delivery with live tracking, online payments via Razorpay. WebSocket live updates, Google/Email auth, geolocation tracking, role-based dashboards. Smooth multi-role UX across platform.",
-    techStack: ["React", "Node.js", "JWT", "MongoDB", "Tailwind CSS", "WebSocket", "Razorpay"],
+    techStack: [
+      "React",
+      "Node.js",
+      "JWT",
+      "MongoDB",
+      "Tailwind CSS",
+      "WebSocket",
+      "Razorpay",
+    ],
     liveURL: null,
-    githubURL: "https://github.com/RakeshRanjan6810/VINGO_FOOD", 
+    githubURL: "https://github.com/RakeshRanjan6810/VINGO_FOOD",
     category: "fullstack",
     badge: "Personal",
     metrics: "Real-time tracking + payments",

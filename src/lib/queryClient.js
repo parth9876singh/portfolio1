@@ -1,4 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient } from "@tanstack/react-query";
 
 // Configure a React Query Client with stable default opts
 // Cache data for 5 minutes, prevent refetching constantly on window focus to avoid hugging API limits.

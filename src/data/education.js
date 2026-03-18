@@ -7,7 +7,13 @@ export const educationData = [
     grade: "CGPA: 7.59",
     description:
       "Pursuing core Computer Science fundamentals with a focus on Data Structures & Algorithms, web development, and scalable backend systems.",
-    coursework: ["Data Structures & Algorithms", "DBMS", "Operating Systems", "Computer Networks", "OOP"],
+    coursework: [
+      "Data Structures & Algorithms",
+      "DBMS",
+      "Operating Systems",
+      "Computer Networks",
+      "OOP",
+    ],
   },
   {
     id: 2,

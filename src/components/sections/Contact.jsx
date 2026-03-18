@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,7 +61,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     if (data.honeypot) return;
     setIsSubmitting(true);
-    
+
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -74,7 +74,7 @@ const Contact = () => {
           subject: data.subject,
           message: data.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       toast.success("Message sent successfully!");
@@ -144,12 +144,6 @@ const Contact = () => {
                 value: config.social.linkedin,
                 href: config.social.linkedin,
               },
-              {
-                icon: <Code2 size={20} className="text-yellow-400" />,
-                label: "LeetCode",
-                value: "rakeshranjan6810",
-                href: config.social.leetcode,
-              },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 text-gray-300">
                 <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center border-white/5">
@@ -175,8 +169,6 @@ const Contact = () => {
               </div>
             ))}
           </div>
-
-
         </div>
 
         {/* Right Form Panel */}
@@ -277,7 +269,7 @@ const Contact = () => {
                   />
                 </span>
               </button>
-              
+
               <p className="text-[11px] text-gray-500 mt-6 tracking-wide text-right">
                 Usually replies within 24 hours
               </p>
@@ -310,17 +302,6 @@ const Contact = () => {
                 <Linkedin
                   size={20}
                   className="text-gray-300 group-hover:text-blue-400 transition-colors"
-                />
-              </a>
-              <a
-                href={config.social.leetcode}
-                target="_blank"
-                rel="noreferrer"
-                className="group w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-yellow-500/20 hover:border-yellow-500/50 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]"
-              >
-                <Code2
-                  size={20}
-                  className="text-gray-300 group-hover:text-yellow-400 transition-colors"
                 />
               </a>
             </div>
