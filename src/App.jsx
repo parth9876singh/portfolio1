@@ -11,12 +11,14 @@ import Footer from './components/layout/Footer';
 
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
+import Resume from './components/sections/Resume';
 import Education from './components/sections/Education';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
-import Training from './components/sections/Training';
 import Certificates from './components/sections/Certificates';
 import Achievements from './components/sections/Achievements';
+import Training from './components/sections/Training';
+import HackathonBadges from './components/sections/HackathonBadges';
 import Contact from './components/sections/Contact';
 
 const Home = () => (
@@ -31,12 +33,14 @@ const Home = () => (
     </Helmet>
     <Hero />
     <About />
+    <Resume />
     <Education />
     <Skills />
     <Projects />
     <Certificates />
-    <Training />
     <Achievements />
+    <Training />
+    <HackathonBadges />
     <Contact />
   </main>
 );

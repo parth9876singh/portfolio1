@@ -12,7 +12,6 @@ import {
   Linkedin,
   Code2,
 } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -58,38 +57,22 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     if (data.honeypot) return;
-    setIsSubmitting(true);
-    const loadingToast = toast.loading("Sending message...");
+    
+    // Format the form data into an email body
+    const body = `Name: ${data.name}
+Email: ${data.email}
 
-    try {
-      const result = await emailjs.send(
-        "service_zht8ktr",
-        "template_vtgjjzc",
-        {
-          name: data.name,
-          email: data.email,
-          title: data.subject,
-          message: data.message,
-          time: new Date().toLocaleString(),
-        },
-        "WxZmr67dbms7oId--",
-      );
+Message:
+${data.message}
+`;
 
-      console.log("EmailJS Success:", result);
-      toast.success("Message sent! I will get back to you soon.", {
-        id: loadingToast,
-      });
-      reset();
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      toast.error(`Failed: ${error?.text || "Please try again."}`, {
-        id: loadingToast,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Open user's default email client pre-filled with the form data
+    window.location.href = `mailto:${config.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+    
+    toast.success("Opening your email client...");
+    reset();
   };
 
   return (
@@ -149,6 +132,12 @@ const Contact = () => {
                 value: config.social.linkedin,
                 href: config.social.linkedin,
               },
+              {
+                icon: <Code2 size={20} className="text-yellow-400" />,
+                label: "LeetCode",
+                value: "rakeshranjan6810",
+                href: config.social.leetcode,
+              },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 text-gray-300">
                 <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center border-white/5">
@@ -163,7 +152,7 @@ const Contact = () => {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : "_self"}
                       rel="noreferrer"
-                      className="text-lg hover:text-brand-cyan transition-colors pointer-events-auto"
+                      className="text-lg hover:text-brand-cyan transition-colors pointer-events-auto break-all"
                     >
                       {item.value}
                     </a>
@@ -173,6 +162,32 @@ const Contact = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* What I can help with */}
+          <div className="contact-stagger mt-10 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-gray-400 mb-4">
+              What I can help with
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Full Stack Web Apps",
+                "MERN Stack Projects",
+                "REST API Development",
+                "Frontend (React)",
+                "Backend (Node/Express)",
+                "Database Design",
+                "Freelance Projects",
+                "Open Source Collaboration",
+              ].map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-lg hover:border-brand-indigo/40 hover:text-white transition-all duration-300 cursor-default"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 

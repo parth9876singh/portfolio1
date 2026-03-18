@@ -22,6 +22,13 @@ const getProviderConfig = (provider) => {
       iconColor: 'text-orange-400',
       icon: '📚',
     },
+    'LPU / iamneo': {
+      borderColor: 'border-l-4 border-l-cyan-500',
+      bgGlow: 'hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]',
+      iconBg: 'bg-cyan-500/20 border-cyan-500/50',
+      iconColor: 'text-cyan-400',
+      icon: '🎓',
+    },
   };
   return config[provider] || config['HackerRank'];
 };
@@ -80,10 +87,7 @@ const Certificates = () => {
                   cert.credentialURL ? 'cursor-pointer' : 'cursor-default'
                 }`}
               >
-                {/* Verified Badge */}
-                <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-green-500/20 border border-green-500/50 rounded-full flex items-center gap-1 text-xs font-semibold text-green-400">
-                  ✓ Verified
-                </div>
+
 
                 <div className="flex items-start gap-3">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center border flex-shrink-0 ${config.iconBg} text-xl`}>
@@ -110,18 +114,7 @@ const Certificates = () => {
             );
           })}
 
-          {/* Coming Soon Card */}
-          <div className="certificate-card relative rounded-2xl p-6 border-2 border-dashed border-white/20 bg-white/3 backdrop-blur-xl flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300 items-center justify-center min-h-64 group cursor-default hover:border-brand-indigo/50 hover:bg-white/5">
-            <div className="text-center">
-              <div className="text-4xl mb-3 opacity-50 group-hover:opacity-75 transition-opacity">🚀</div>
-              <h3 className="text-lg font-display font-bold text-white/60 group-hover:text-white transition-colors">
-                More Coming Soon
-              </h3>
-              <p className="text-xs text-gray-500 mt-2 group-hover:text-gray-400 transition-colors">
-                Growing my certifications library
-              </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

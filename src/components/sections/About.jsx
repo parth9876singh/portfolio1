@@ -202,38 +202,6 @@ const About = () => {
              <CounterCard label="CGPA" targetValue={parseFloat(config.cgpa || "7.59")} decimals={2} />
           </motion.div>
 
-          {/* Currently Learning */}
-          <motion.div variants={fadeInUp} className="pt-6">
-            <h4 className="text-white font-display font-medium mb-4 flex items-center gap-2">
-              <Terminal size={18} className="text-brand-cyan" /> Currently Learning
-            </h4>
-            <div className="flex flex-wrap gap-3">
-              {config.currentlyLearning.map((tech, i) => (
-                <motion.span 
-                  key={i} 
-                  variants={popIn}
-                  className="px-4 py-2 rounded-full text-sm font-mono bg-brand-indigo/10 border border-brand-indigo/30 text-brand-indigo flex items-center gap-2 shadow-[0_0_10px_rgba(99,102,241,0.1)] pointer-events-auto"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Actions */}
-          <motion.div variants={fadeInUp} className="pt-8 flex flex-col sm:flex-row items-center gap-4 relative z-50">
-            <a href={config.resumeURL} download className="w-full sm:w-auto pointer-events-auto">
-              <MagneticButton variant="primary" className="w-full shadow-[0_0_20px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2">
-                <Download size={18} /> Download Resume
-              </MagneticButton>
-            </a>
-            <a href={config.social.linkedin} target="_blank" rel="noreferrer" className="w-full sm:w-auto pointer-events-auto">
-              <MagneticButton variant="secondary" className="w-full flex items-center justify-center gap-2 border-white/10 hover:border-brand-cyan/50 hover:bg-brand-cyan/10 hover:text-brand-cyan transition-colors">
-                <Linkedin size={18} /> Let's Connect
-              </MagneticButton>
-            </a>
-          </motion.div>
 
         </motion.div>
 

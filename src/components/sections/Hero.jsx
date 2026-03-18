@@ -92,11 +92,6 @@ const Hero = () => {
             <span className="relative z-10 flex items-center gap-2">Explore My Work</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
           </button>
-          <a download href="/documents/RakeshRanjan_CV.pdf" className="w-full sm:w-auto">
-            <button className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 overflow-hidden w-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:border-white/40 hover:bg-white/15 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-              <span className="relative z-10 flex items-center gap-2">View Resume</span>
-            </button>
-          </a>
         </div>
 
         {/* Social Icons Row */}

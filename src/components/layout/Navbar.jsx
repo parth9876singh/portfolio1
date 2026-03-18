@@ -9,12 +9,14 @@ import { config } from '../../data/config';
 const defaultNavLinks = [
   { name: 'Home', id: 'home' },
   { name: 'About', id: 'about' },
+  { name: 'Resume', id: 'resume' },
   { name: 'Education', id: 'education' },
   { name: 'Skills', id: 'skills' },
   { name: 'Projects', id: 'projects' },
-  { name: 'Training', id: 'training' },
   { name: 'Certificates', id: 'certificates' },
   { name: 'Achievements', id: 'achievements' },
+  { name: 'Training', id: 'training' },
+  { name: 'Badges', id: 'hackathon-badges' },
   { name: 'Contact', id: 'contact' },
 ];
 
