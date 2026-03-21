@@ -107,16 +107,12 @@ const SkillCard = ({ skill }) => {
           </div>
 
           {/* Bottom: Name & Badge */}
-          <div className="flex flex-col items-center gap-3 w-full">
+          <div className="flex flex-col items-center gap-1 w-full">
             <h3 className="font-display font-bold text-white text-lg text-center tracking-wide">
               {skill.name}
             </h3>
 
-            <span
-              className={`text-[10px] font-mono tracking-wider uppercase px-3 py-1.5 rounded-full border ${getLevelStyles(skill.level)}`}
-            >
-              {skill.level}
-            </span>
+
           </div>
         </div>
       </div>

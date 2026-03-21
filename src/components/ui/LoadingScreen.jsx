@@ -38,43 +38,48 @@ const LoadingScreen = ({ onComplete }) => {
       <div className="relative flex flex-col items-center">
         {/* Animated SVG Logo */}
         <motion.div className="mb-12 relative w-32 h-32 flex items-center justify-center">
-          <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
-            <motion.path
-              d="M 30,70 L 30,30 L 50,30 C 60,30 65,35 65,45 C 65,55 60,60 50,60 L 30,60 M 45,60 L 65,90"
-              fill="transparent"
-              strokeWidth="4"
-              stroke="url(#gradient)"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-            />
-            <motion.path
-              d="M 60,70 L 60,30 L 80,30 C 90,30 95,35 95,45 C 95,55 90,60 80,60 L 60,60 M 75,60 L 95,90"
-              fill="transparent"
-              strokeWidth="4"
-              stroke="rgba(255,255,255,0.1)"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
-            />
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="100%" stopColor="#6366f1" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="absolute inset-0 bg-brand-cyan/20 blur-[50px] rounded-full"
-          />
-        </motion.div>
+  <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
+    
+    {/* 🔤 Letter P */}
+    <motion.path
+      d="M 25,70 L 25,30 L 45,30 
+         C 60,30 60,50 45,50 
+         L 25,50"
+      fill="transparent"
+      strokeWidth="4"
+      stroke="url(#gradient)"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.2 }}
+    />
+
+    {/* 🔤 Letter S (PROPER FIXED) */}
+    <motion.path
+      d="M 70,30 
+         C 55,30 55,50 70,50 
+         C 85,50 85,70 70,70 
+         C 55,70 55,90 70,90"
+      fill="transparent"
+      strokeWidth="4"
+      stroke="url(#gradient)"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.2, delay: 0.2 }}
+    />
+
+    {/* Gradient */}
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#06b6d4" />
+        <stop offset="100%" stopColor="#6366f1" />
+      </linearGradient>
+    </defs>
+  </svg>
+</motion.div>
 
         {/* Progress Text */}
         <div className="text-brand-cyan font-mono text-sm tracking-widest mb-4 flex items-center gap-2">
