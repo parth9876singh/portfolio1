@@ -9,7 +9,7 @@ Place your resume/CV file in this folder.
 - DOC/DOCX
 
 **Example filename:**
-- `Rakesh_Ranjan_Resume.pdf`
+
 - `CV.pdf`
 
 The file will be accessible at: `/documents/your-filename.pdf`

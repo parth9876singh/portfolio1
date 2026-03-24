@@ -1,8 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { Terminal, Download, Linkedin } from "lucide-react";
+import { Terminal, Download, Linkedin, Cpu } from "lucide-react";
 import { config } from "../../data/config";
-import MagneticButton from "../ui/MagneticButton";
 
 // Animated Counter Component
 const AnimatedCounter = ({
@@ -15,20 +14,17 @@ const AnimatedCounter = ({
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
-  // Create a raw motion value that starts at `from`
   const motionValue = useSpring(from, {
     duration: duration * 1000,
     bounce: 0,
   });
 
-  // When the component comes into view, animate to the target value
   useEffect(() => {
     if (inView) {
       motionValue.set(to);
     }
   }, [inView, motionValue, to]);
 
-  // Transform the raw value into a formatted string
   const rounded = useTransform(motionValue, (latest) => {
     if (decimals > 0) {
       return latest.toFixed(decimals) + suffix;
@@ -43,21 +39,24 @@ const CounterCard = ({ label, targetValue, decimals = 0, suffix = "" }) => (
   <motion.div
     whileHover={{ y: -6 }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    className="group relative w-full glass-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-brand-cyan/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)] overflow-hidden cursor-none"
+    className="group relative w-full bg-[#0a0f18]/90 backdrop-blur-md border border-white/10 p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-brand-cyan/50 hover:bg-brand-cyan/5 overflow-hidden cursor-none shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
   >
-    {/* Hover Glow */}
-    <div className="absolute inset-0 bg-gradient-to-tr from-brand-indigo/0 via-brand-cyan/5 to-brand-indigo/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-    <div
-      className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-      style={{ boxShadow: "0 0 20px rgba(6, 182, 212, 0.15)" }}
-    />
+    {/* Tech Corner Brackets */}
+    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-cyan/30 group-hover:border-brand-cyan transition-colors duration-500 z-10 pointer-events-none" />
+    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-brand-cyan/30 group-hover:border-brand-cyan transition-colors duration-500 z-10 pointer-events-none" />
 
-    <h3 className="text-4xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan mb-2 relative z-10">
+    {/* Scanline Background */}
+    <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] opacity-20 pointer-events-none mix-blend-overlay z-0" />
+
+    <h3 className="text-3xl md:text-4xl font-mono font-bold text-white group-hover:text-brand-cyan mb-2 relative z-10 drop-shadow-[0_0_10px_rgba(6,182,212,0.4)] transition-colors">
       <AnimatedCounter to={targetValue} decimals={decimals} suffix={suffix} />
     </h3>
-    <p className="text-gray-400 font-sans text-sm font-medium uppercase tracking-wider relative z-10 text-center">
-      {label}
+    <p className="text-brand-cyan/70 font-mono text-[10px] font-bold uppercase tracking-widest relative z-10 text-center flex items-center gap-2">
+      <span className="w-1.5 h-1.5 bg-brand-cyan/50 rounded-full" /> {label}
     </p>
+
+    {/* Bottom scanning laser */}
+    <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-cyan group-hover:w-full transition-all duration-500 ease-out z-20" />
   </motion.div>
 );
 
@@ -92,136 +91,109 @@ const About = () => {
     },
   };
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
-  const popIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: "spring", stiffness: 300, damping: 20 },
-    },
-  };
-
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="py-32 px-6 lg:px-12 relative z-10 w-full overflow-hidden"
+      className="py-32 relative z-10 w-full overflow-hidden bg-[#050910] border-t border-white/5"
     >
-      {/* Background Blobs */}
+      {/* High-tech Background Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(#6366f1 1px, transparent 1px), linear-gradient(90deg, #6366f1 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }}
+      />
+
+      {/* Cyberpunk Decorative Huge Background Text */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full flex justify-center -z-10 opacity-[0.03] pointer-events-none overflow-hidden">
+        <span className="text-[120px] md:text-[200px] font-black text-transparent whitespace-nowrap" style={{ WebkitTextStroke: "2px #6366f1" }}>
+          SYS.USER
+        </span>
+      </div>
+
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-brand-indigo/15 blur-[120px]" />
-        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-brand-cyan/15 blur-[120px]" />
-        {/* Dot grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at center, white 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
+        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-brand-cyan/10 blur-[120px]" />
       </div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center max-w-7xl mx-auto relative z-10"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center max-w-7xl mx-auto px-6 lg:px-12 relative z-10"
       >
-        {/* Left Column: Photo & Availability */}
+        {/* Left Column: Tech Photo Display */}
         <motion.div
           variants={fadeLeft}
-          className="lg:col-span-5 relative w-full flex items-center justify-center p-4"
+          className="lg:col-span-5 relative w-full flex items-center justify-center p-4 min-h-[500px]"
         >
           {/* Glowing blob behind image */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-indigo/20 rounded-full blur-[80px] pointer-events-none" />
-
-          {/* Floating Dots/Particles */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full bg-brand-cyan/40 shadow-[0_0_10px_rgba(6,182,212,0.5)]"
-                animate={{
-                  y: [0, -20, 0],
-                  x: [0, Math.random() * 10 - 5, 0],
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: Math.random() * 2,
-                }}
-                style={{
-                  top: `${20 + Math.random() * 60}%`,
-                  left: `${10 + Math.random() * 80}%`,
-                }}
-              />
-            ))}
-          </div>
 
           {/* Photo Card Container */}
           <motion.div
             whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative w-full max-w-[380px] aspect-[380/460] rounded-2xl group mx-auto z-10 perspective-[1000px]"
+            className="relative w-full max-w-[380px] aspect-[380/460] group mx-auto z-10 perspective-[1000px]"
           >
             {/* Border spin container */}
-            <div className="absolute -inset-[3px] rounded-[18px] overflow-hidden group-hover:blur-sm transition-all duration-500">
+            <div className="absolute -inset-[2px] overflow-hidden bg-[#0a0f18] border border-white/10 group-hover:border-brand-indigo/50 transition-colors duration-500 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#6366f1_360deg)] animate-[spin_4s_linear_infinite]" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_180deg,transparent_0_340deg,#06b6d4_360deg)] animate-[spin_4s_linear_infinite]" />
             </div>
 
-            {/* Dynamic glow behind the card on hover */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-brand-indigo/30 to-brand-cyan/30 rounded-[2rem] blur-xl opacity-0 hover-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
             {/* Inner background blocking the spin from taking over whole card, showing only border */}
-            <div className="absolute inset-0 rounded-2xl bg-[#0a0a0f] z-10" />
+            <div className="absolute inset-0 bg-[#050910] z-10 m-[2px]" />
 
             {/* Frame with padding */}
-            <div className="absolute inset-0 p-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col z-20">
+            <div className="absolute inset-0 p-3 bg-transparent flex flex-col z-20">
               {/* Image Container */}
-              <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-brand-indigo/30 via-brand-base to-brand-cyan/20 flex items-center justify-center">
+              <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-[#0a0f18] to-[#121c2d] flex items-center justify-center border border-white/5">
                 {config.profilePhoto ? (
-                  <img
-                    src={config.profilePhoto}
-                    alt={config.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                  />
+                  <>
+                    <img
+                      src="/images/parth_img.jpeg"
+                      alt={config.name}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100 filter contrast-125 saturate-100 group-hover:saturate-150"
+                    />
+                    {/* Scanline overlay over photo */}
+                    <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.4)_50%)] bg-[length:100%_4px] opacity-30 pointer-events-none mix-blend-overlay" />
+
+                    {/* Holographic sweep effect */}
+                    <div className="absolute inset-0 bg-brand-cyan/10 opacity-0 group-hover:opacity-100 mix-blend-overlay transition-opacity duration-500" />
+                  </>
                 ) : (
-                  <span className="text-7xl md:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan select-none">
+                  <span className="text-7xl md:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan select-none mix-blend-screen opacity-50">
                     {config.name
                       .split(" ")
                       .map((n) => n[0])
                       .join("")}
                   </span>
                 )}
-                {/* Subtle inner shadow overlay at bottom */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+                {/* Tech UI HUD overlays on image */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-brand-cyan/50 z-30" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-brand-cyan/50 z-30" />
+
+                <div className="absolute bottom-2 left-4 text-[8px] font-mono text-brand-cyan/70 tracking-widest hidden md:block z-30">
+                  REC // {new Date().getFullYear()}
+                </div>
               </div>
             </div>
 
             {/* Badges */}
-            <div className="absolute -top-4 -right-2 md:-right-6 bg-brand-indigo/90 backdrop-blur text-white text-xs font-mono px-4 py-2 rounded-xl border border-brand-indigo/50 shadow-[0_0_20px_rgba(99,102,241,0.3)] z-20 pointer-events-auto">
-              MERN Developer
+            <div className="absolute -top-4 -right-2 md:-right-6 bg-brand-indigo/10 backdrop-blur-md text-brand-indigo text-[10px] font-bold font-mono px-3 py-1.5 border border-brand-indigo/40 shadow-[0_0_15px_rgba(99,102,241,0.2)] z-30 uppercase tracking-widest">
+              [ OP_ROLE: MERN_DEV ]
             </div>
 
             {config.availability && (
-              <div className="absolute -bottom-4 -left-2 md:-left-6 glass-card bg-black/60 backdrop-blur-md border border-white/10 px-5 py-2.5 rounded-full flex items-center gap-3 shadow-xl z-20 pointer-events-auto">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              <div className="absolute -bottom-4 -left-2 md:-left-6 bg-green-500/10 backdrop-blur-md border border-green-500/30 px-4 py-2 flex items-center gap-3 shadow-[0_0_15px_rgba(34,197,94,0.2)] z-30">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
                 </span>
-                <span className="text-sm font-mono text-white tracking-wide">
+                <span className="text-[10px] font-mono font-bold text-green-400 tracking-widest uppercase">
                   {config.availabilityText}
                 </span>
               </div>
@@ -232,41 +204,45 @@ const About = () => {
         {/* Right Column: Content */}
         <motion.div
           variants={fadeRight}
-          className="lg:col-span-7 flex flex-col space-y-8"
+          className="lg:col-span-7 flex flex-col space-y-8 relative z-10"
         >
           {/* Header */}
           <div>
-            <span className="text-brand-indigo font-mono text-sm tracking-widest uppercase mb-3 block font-semibold">
-              About Me
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight">
-              Passionate about building{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan text-glow">
-                things that matter.
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-indigo/10 border border-brand-indigo/30 text-brand-indigo text-[10px] sm:text-xs font-mono font-bold mb-6 tracking-widest uppercase shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+              <Cpu size={14} /> SYS.USER.PROFILE
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-display font-bold text-white leading-tight uppercase tracking-wider">
+              Passionate about building <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-cyan">things that matter.</span>
             </h2>
           </div>
 
           {/* Bio (Rendered as HTML from config) */}
-          <div
-            className="text-gray-300 font-sans text-lg md:text-xl leading-relaxed max-w-2xl prose prose-invert prose-p:mb-5"
-            dangerouslySetInnerHTML={{ __html: config.bioHtml }}
-          />
+          <div className="relative">
+            {/* Tech Left Border Accent */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-indigo to-brand-cyan opacity-80" />
+
+            <div
+              className="pl-6 text-gray-300 font-sans text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl prose prose-invert prose-p:mb-5 prose-strong:text-brand-cyan prose-strong:font-mono prose-strong:font-normal"
+              dangerouslySetInnerHTML={{ __html: config.bioHtml }}
+            />
+          </div>
 
           {/* Animated Counter Cards */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-4"
           >
-            <CounterCard label="Projects Built" targetValue={3} />
-            <CounterCard label="LeetCode Solved" targetValue={200} suffix="+" />
-            <CounterCard label="Technologies" targetValue={7} suffix="+" />
+            <CounterCard label="Projects Built" targetValue={5} suffix="+" />
+            <CounterCard label="Coding Probleum" targetValue={250} suffix="+" />
+            <CounterCard label="Technology" targetValue={7} suffix="+" />
             <CounterCard
-              label="CGPA"
+              label="CGPA_RATING"
               targetValue={parseFloat(config.cgpa || "7.59")}
               decimals={2}
             />
           </motion.div>
+
+          {/* Download Resume / LinkedIn placed here visually if needed, though they usually sit in Hero */}
         </motion.div>
       </motion.div>
     </section>

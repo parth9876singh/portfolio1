@@ -110,7 +110,7 @@ const Training = () => {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-12 inline-block relative group">
-          Training & Certifications
+          Training
           <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-indigo to-brand-cyan rounded-full transform origin-left transition-transform group-hover:scale-x-110"></span>
         </h2>
 

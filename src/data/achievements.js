@@ -7,7 +7,7 @@ export const achievements = [
     date: "Since Jan 2025",
     description:
       "Strengthening proficiency in algorithms, data structures, and problem-solving through consistent practice.",
-    verifyURL: "https://leetcode.com/u/rakeshranjan6810/",
+    verifyURL: "",
     image: null,
   },
   {
@@ -19,7 +19,7 @@ export const achievements = [
     description:
       "Progressed to the second round in a competitive coding hackathon among statewide participants.",
     verifyURL:
-      "https://drive.google.com/file/d/11UsiYU8MGkYnHPVsv_Ba1SIe7oWjhi6C/view",
+      "",
     image: null,
   },
 ];

@@ -18,7 +18,7 @@ export const educationData = [
   {
     id: 2,
     degree: "Intermediate (PCM)",
-    institution: "Guru Gobind Singh Public School, Bokaro, Jharkhand",
+    institution: "Devasthaly Vidyapeeth, Ballia,UP",
     duration: "Mar 2020 – May 2022",
     grade: "Percentage: 75%",
     description:
@@ -28,7 +28,7 @@ export const educationData = [
   {
     id: 3,
     degree: "Matriculation",
-    institution: "Bokaro Public School, Bokaro, Jharkhand",
+    institution: "Devasthaly Vidyapeeth, Ballia,UP",
     duration: "Mar 2018 – May 2020",
     grade: "Percentage: 78.6%",
     description:

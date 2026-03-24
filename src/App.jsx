@@ -43,7 +43,6 @@ const Home = () => (
     <Skills />
     <Projects />
     <Certificates />
-    <Achievements />
     <Training />
     <HackathonBadges />
     <Contact />

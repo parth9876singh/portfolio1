@@ -3,7 +3,7 @@ export const config = {
   role: "Full Stack Developer (Student)",
   roles: ["Full Stack Developer", "Problem Solver"],
   bioHtml:
-    '<p>I am Parth Singh, a Computer Science and Engineering student at Lovely Professional University with a strong foundation in the MERN stack (MongoDB, Express.js, React.js, Node.js) and programming languages including Java, C++, and JavaScript.</p><p class="mt-4">I have hands-on experience building full-stack web applications, including an AI-based career guidance system, a real-time food delivery platform with payment and live tracking features, and an AI-powered blogging platform. These projects demonstrate my ability to design scalable systems, develop secure REST APIs, and integrate modern technologies.</p><p class="mt-4">I have also completed training in Full Stack Web Development (MERN), where I worked on JWT authentication, CRUD operations, and backend optimization.</p><p class="mt-4">In addition, I have solved 200+ problems on LeetCode, strengthening my problem-solving and data structures skills. I am particularly interested in backend development and focused on building efficient, scalable, and production-ready applications.</p>',
+    '<p>I am Parth Singh, a Computer Science and Engineering student at Lovely Professional University with a strong foundation in the MERN stack (MongoDB, Express.js, React.js, Node.js) and programming languages including Java, C++, and JavaScript.</p><p class="mt-4">I have hands-on experience building full-stack web applications, including an AI-Powered blog application, a real-time doctor appointment system, and an AI-powered Content and Image generator. These projects demonstrate my ability to design scalable systems, develop secure REST APIs, and integrate modern technologies.</p><p class="mt-4">I have also completed training in Full Stack Web Development (MERN), where I worked on JWT authentication, CRUD operations, and backend optimization.</p><p class="mt-4">In addition, I have solved 250+ problems on LeetCode,GeekForGeeks and HackerRank strengthening my problem-solving and data structures skills. I am particularly interested in backend development and focused on building efficient, scalable, and production-ready applications.</p>',
   tagline: "Building scalable MERN applications with clean, modern UI",
   email: "singhparth2318.com@gmail.com",
   phone: "+91 8303908753",
@@ -23,7 +23,7 @@ export const config = {
   },
   githubUsername: "parth9876singh",
   leetcodeUsername: "Parth9429Nf",
-  resumeURL: "/resume.pdf",
+  resumeURL: "/documents/Parth_SinghCV.pdf",
   profilePhoto: "/images/photocv.jpeg",
   joinedCodingDate: "2022-01-01",
 };

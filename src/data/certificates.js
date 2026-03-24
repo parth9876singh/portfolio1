@@ -1,23 +1,25 @@
 export const certificates = [
   {
     id: 1,
-    title: "Node (Basic)",
+    title: "React (Basic)",
     provider: "HackerRank",
-    date: "Dec 2025",
+    date: "Mar 2025",
     description:
-      "Verified skills in Node.js fundamentals, asynchronous JavaScript, and backend programming concepts.",
+      "Verified skills in React js fundamentals, asynchronous JavaScript, and backend programming concepts.",
     credentialURL:
-      "https://www.hackerrank.com/certificates/iframe/36677bfeb5a8",
+      "",
+    image: "/images/hackerrank.png",
   },
   {
     id: 2,
-    title: "Social Networking",
+    title: "Cloud Computing",
     provider: "NPTEL",
-    date: "Apr 2025",
+    date: "Nov 2025",
     description:
-      "Completed NPTEL course on Social Networking concepts and applications.",
+      "Completed NPTEL course on Cloud Computing concepts and applications.",
     credentialURL:
-      "https://drive.google.com/file/d/1QfQm9v_T6TRPwBPhvvpTqKdy4Q1ABrGm/view",
+      "",
+    image: "/images/cloud.png",
   },
   {
     id: 3,
@@ -27,6 +29,29 @@ export const certificates = [
     description:
       "Completed an intensive 72-hour program enhancing core DSA concepts and problem-solving techniques.",
     credentialURL:
-      "https://www.linkedin.com/posts/rakeshranjan12_learningneverstops-datastructures-algorithms-activity-7286290079680024576-_Gv_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEYHkpMB2CI_tTctpaJVaCTEDfnoq8dLPhg",
+      "",
+    image: "/images/neocolab.png",
+  },
+  {
+    id: 4,
+    title: "MERN Stack",
+    provider: "Cipher School",
+    date: "Jul 2025",
+    description:
+      "Completed an intensive 70-hour of training  in Full-Stack Development from CipherSchools.",
+    credentialURL:
+      "",
+    image: "/images/cipher.png",
+  },
+  {
+    id: 5,
+    title: "Responsive web Design",
+    provider: "Free Code Camp",
+    date: "Jul 2025",
+    description:
+      "Completed an intensive 70-hour of training  in Full-Stack Development from CipherSchools.",
+    credentialURL:
+      "",
+    image: "/images/freecodecamp.png",
   },
 ];
