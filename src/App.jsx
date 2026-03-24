@@ -24,9 +24,7 @@ import Contact from "./components/sections/Contact";
 const Home = () => (
   <main className="w-full relative">
     <Helmet>
-      <title>
-        {config.name} | {config.role}
-      </title>
+      <title>{`${config.name} | ${config.role}`}</title>
       <meta name="description" content={config.tagline} />
       <meta
         name="keywords"
