@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { BookOpen, MapPin, Calendar, Cpu, Hexagon } from "lucide-react";
+import { BookOpen, MapPin, Calendar, GraduationCap } from "lucide-react";
 import { educationData } from "../../data/education";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +13,7 @@ const Education = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".edu-animate",
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
@@ -31,115 +31,95 @@ const Education = () => {
   }, []);
 
   return (
-    <section id="education" ref={sectionRef} className="py-32 relative w-full border-t border-white/5 bg-[#050910] overflow-hidden">
-      {/* High-tech Background Grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: "linear-gradient(#06b6d4 1px, transparent 1px), linear-gradient(90deg, #06b6d4 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
-        }}
-      />
-
-      {/* Glow Orbs */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-indigo/10 rounded-full blur-[150px] pointer-events-none" />
+    <section id="education" ref={sectionRef} className="py-32 relative w-full border-t border-white/5 bg-[#0a0c14] overflow-hidden">
+      {/* Floating Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-1/4 left-[-5%] w-[450px] h-[450px] bg-brand-indigo/5 rounded-full blur-[110px] animate-blob" />
+        <div className="absolute bottom-1/4 right-[-5%] w-[450px] h-[450px] bg-brand-cyan/5 rounded-full blur-[110px] animate-blob-reverse" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
         {/* Header Section */}
-        <div className="edu-animate flex flex-col items-center text-center mb-24 relative">
-          {/* Cyberpunk Decorative Huge Background Text */}
+        <div className="edu-animate flex flex-col items-center text-center mb-20 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center -z-10 opacity-30 pointer-events-none overflow-hidden">
             <span
               className="text-[80px] md:text-[140px] font-black text-transparent whitespace-nowrap"
-              style={{ WebkitTextStroke: "2px rgba(6, 182, 212, 0.1)" }}
+              style={{ WebkitTextStroke: "2px rgba(6, 182, 212, 0.08)" }}
             >
               ACADEMY
             </span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-mono font-bold rounded-none mb-6 tracking-widest uppercase relative shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-            <div className="absolute -left-[1px] -top-[1px] w-2 h-2 border-t border-l border-brand-cyan" />
-            <div className="absolute -right-[1px] -bottom-[1px] w-2 h-2 border-b border-r border-brand-cyan" />
-            <Cpu size={14} /> SYS.DB.EDU
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-bold rounded-full mb-6 tracking-wide uppercase shadow-[4px_4px_10px_rgba(0,0,0,0.2),inset_-3px_-3px_6px_rgba(0,0,0,0.4),inset_3px_3px_6px_rgba(255,255,255,0.05)]">
+            <GraduationCap size={14} className="text-brand-cyan" /> ACADEMICS
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 uppercase tracking-wider relative">
-            Academic <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-indigo">Data</span>
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-white mb-6 uppercase tracking-wider relative">
+            Education <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-indigo">Milestones</span>
           </h2>
         </div>
 
-        {/* Education Timeline / Grid */}
+        {/* Education Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {educationData.map((edu, index) => {
+          {educationData.map((edu) => {
             const Icon = edu.icon || BookOpen;
             return (
               <div
                 key={edu.id}
                 className="edu-animate relative group h-full"
               >
-                {/* Sci-fi Hover Glow Card */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-brand-indigo/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-xl" />
+                {/* Soft background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/10 to-brand-indigo/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl rounded-[32px]" />
 
-                <div className="relative h-full bg-[#0a0f18]/80 backdrop-blur-md border border-white/10 group-hover:border-brand-cyan/50 p-8 md:p-10 flex flex-col transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)] z-10 overflow-hidden">
+                <div className="relative h-full clay-card p-8 md:p-10 flex flex-col transition-all duration-500 hover:border-brand-cyan/35 z-10">
 
-                  {/* Hexagon Background Watermark */}
-                  <Hexagon className="absolute -bottom-16 -right-16 w-80 h-80 text-brand-cyan/[0.02] group-hover:text-brand-cyan/[0.06] transition-colors duration-700 -rotate-15 stroke-[0.3]" />
-
-                  {/* Cyberpunk Corners */}
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-transparent group-hover:border-brand-cyan transition-colors duration-500" />
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-transparent group-hover:border-brand-indigo transition-colors duration-500" />
-
-                  {/* Header / Meta */}
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-8 gap-6 relative z-10 border-b border-white/5 pb-8">
+                  {/* Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-6 relative z-10 border-b border-white/5 pb-6">
                     <div className="flex items-center gap-5">
-                      {/* Sci-fi Diamond Icon */}
-                      <div className="relative w-14 h-14 flex flex-shrink-0 items-center justify-center">
-                        <div className="absolute inset-0 bg-brand-cyan/10 border border-brand-cyan/40 rotate-45 group-hover:rotate-90 group-hover:bg-brand-cyan/20 transition-all duration-700 ease-out shadow-[0_0_15px_rgba(6,182,212,0.2)]" />
-                        <Icon size={24} className="text-brand-cyan z-10 drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" />
+                      {/* Bubbly Clay Circle Icon */}
+                      <div className="w-14 h-14 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center shadow-[6px_6px_15px_rgba(0,0,0,0.3),inset_-4px_-4px_8px_rgba(0,0,0,0.4),inset_4px_4px_8px_rgba(255,255,255,0.05)] transition-transform duration-500 group-hover:scale-110">
+                        <Icon size={24} className="text-brand-cyan drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]" />
                       </div>
 
                       <div>
-                        <div className="text-xs font-mono text-brand-indigo mb-2 flex items-center gap-2 tracking-widest uppercase font-bold">
-                          <Calendar size={14} className="text-brand-cyan" /> {edu.duration}
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo text-[10px] font-bold rounded-full mb-1 uppercase tracking-wider shadow-[inset_1px_1px_2px_rgba(255,255,255,0.05)]">
+                          <Calendar size={12} className="text-brand-indigo" /> {edu.duration}
                         </div>
-                        <h3 className="text-2xl font-display font-bold text-white tracking-wide group-hover:text-brand-cyan transition-colors">
+                        <h3 className="text-xl md:text-2xl font-display font-bold text-white tracking-wide group-hover:text-brand-cyan transition-colors">
                           {edu.degree}
                         </h3>
                       </div>
                     </div>
-
-
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 flex-grow">
-                    <h4 className="text-lg font-medium text-gray-200 mb-5 flex items-center gap-3">
-                      <MapPin size={18} className="text-brand-cyan" /> {edu.institution}
-                    </h4>
+                  <div className="relative z-10 flex-grow flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-base md:text-lg font-medium text-gray-200 mb-4 flex items-center gap-2.5">
+                        <MapPin size={16} className="text-brand-cyan" /> {edu.institution}
+                      </h4>
 
-                    <p className="text-gray-400 text-sm leading-relaxed mb-8 font-sans border-l-2 border-white/10 pl-5 group-hover:border-brand-cyan/50 transition-colors">
-                      {edu.description}
-                    </p>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-8 font-sans border-l-2 border-brand-cyan/30 pl-5 group-hover:border-brand-cyan/60 transition-colors duration-300">
+                        {edu.description}
+                      </p>
+                    </div>
 
                     <div>
-                      {/* Cool Data Modules Header */}
+                      {/* Data Modules Header */}
                       <div className="flex items-center gap-3 mb-5">
-                        <div className="w-1.5 h-1.5 bg-brand-cyan shadow-[0_0_5px_rgba(6,182,212,0.8)]" />
-                        <span className="text-xs font-mono text-brand-cyan tracking-widest uppercase font-bold drop-shadow-[0_0_5px_rgba(6,182,212,0.4)]">
-                          Data Modules
+                        <span className="text-xs font-sans text-brand-cyan tracking-wider uppercase font-bold">
+                          Course Modules
                         </span>
-                        <div className="flex-1 h-px bg-gradient-to-r from-brand-cyan/30 to-transparent" />
+                        <div className="flex-1 h-[2px] bg-gradient-to-r from-brand-cyan/20 to-transparent rounded-full" />
                       </div>
 
                       <div className="flex flex-wrap gap-2.5">
-                        {edu.coursework.map((course, idx) => (
+                        {edu.coursework.map((course) => (
                           <div
                             key={course}
-                            className="text-[11px] font-mono px-3 py-1.5 bg-black/60 border border-white/10 text-gray-300 group-hover:border-brand-cyan/40 hover:!border-brand-cyan hover:!bg-brand-cyan/10 hover:text-brand-cyan transition-all cursor-default"
+                            className="text-xs font-medium px-4 py-2 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-brand-cyan/10 hover:border-brand-cyan/30 hover:text-brand-cyan transition-all cursor-default shadow-[2px_2px_6px_rgba(0,0,0,0.2),inset_-2px_-2px_4px_rgba(0,0,0,0.4),inset_2px_2px_4px_rgba(255,255,255,0.05)]"
                           >
-                            <span className="text-brand-cyan/50 mr-1.5">[{idx + 1}]</span>
                             {course}
                           </div>
                         ))}
